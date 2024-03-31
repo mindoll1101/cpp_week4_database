@@ -28,18 +28,18 @@ Entry *create(Type type, std::string key, void *value){
   switch(type){
     case INT:
       (newEntry -> value) = (int *)value;
-      break;
+      return newEntry;
     case DOUBLE:
       (newEntry -> value) = (double *)value;
-      break;
+      return newEntry;
     case STRING:
       (newEntry -> value) = (std::string *)value;
-      break;
+      return newEntry;
     case ARRAY:
       (newEntry -> value) = (Array *)value;
-      break;
+      return newEntry;
   }
-  return newEntry;
+  
 };
 
 // 데이터베이스를 초기화한다.
@@ -65,16 +65,19 @@ Entry *get(Database &database, std::string &key){
   Entry *getEntry;
   for(int i = 0; i < database.dbSize; i++){
     if((database.db + i) -> key == key){
-      getEntry = database.db + i;
+      return database.db + i;
     }
   }
-  return getEntry;
+  return NULL;
 };
 
 // 데이터베이스에서 키에 해당하는 엔트리를 제거한다.
 void remove(Database &database, std::string &key){
-  delete get(database, key);
-  database.dbSize -= 1;
+  Entry *entry = get(database, key);
+  if(entry != NULL){
+    delete entry;
+    database.dbSize -= 1;
+  }
 };
 
 // 데이터베이스를 해제한다.
