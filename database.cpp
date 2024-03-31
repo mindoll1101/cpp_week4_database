@@ -81,6 +81,7 @@ void remove(Database &database, std::string &key){
     
     database.db = new Entry[database.dbSize - 1];
     for(int i = 0; i < database.dbSize; i++){
+      //key에 해당하는 entry만 제외하고 db에 복사
       if((temp + i) -> key != key){
         *(database.db + j) = *(temp + i);
         j++;
