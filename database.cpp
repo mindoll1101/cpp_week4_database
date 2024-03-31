@@ -74,9 +74,21 @@ Entry *get(Database &database, std::string &key){
 // 데이터베이스에서 키에 해당하는 엔트리를 제거한다.
 void remove(Database &database, std::string &key){
   Entry *entry = get(database, key);
+  
   if(entry != NULL){
+    Entry *temp = database.db;
+    int j = 0;
+    
+    database.db = new Entry[database.dbSize - 1];
+    for(int i = 0; i < database.dbSize; i++){
+      if((temp + i) -> key != key){
+        *(database.db + j) = *(temp + i);
+        j++;
+      }
+    }
+    database.dbSize--;
+    delete[] temp;
     delete entry;
-    database.dbSize -= 1;
   }
 };
 
