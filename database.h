@@ -19,7 +19,7 @@ struct Entry {
 
 struct Database {
   int dbSize;
-  Entry *data;
+  Entry *db;
 };
 
 // 엔트리를 생성한다.
