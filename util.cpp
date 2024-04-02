@@ -1,7 +1,6 @@
 #include "database.h"
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 Type selectType(std::string type){  //입력받은 타입을 enum으로 지정한다.
   Type t;
@@ -112,7 +111,7 @@ void getValue(void *value, Type type){
       std::cout << *(double *)value;
       break;
     case STRING:
-      std::cout << *(std::string *)value;
+      std::cout << "\"" <<*(std::string *)value << "\"";
       break;
     case ARRAY:
       std::cout << "[";
