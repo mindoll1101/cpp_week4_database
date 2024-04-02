@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 
 enum Type { INT, DOUBLE, STRING, ARRAY };
 
