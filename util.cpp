@@ -77,7 +77,7 @@ void createArr(void *array, bool *typeValid){    //arr포인터에 Array형 포�
 
 void inputValue(Database &database, std::string key, Type type){
   Entry *entry = get(database, key);
-  if(entry == NULL){
+  if(entry != NULL){
     remove(database, key);
   }
   void *value;
