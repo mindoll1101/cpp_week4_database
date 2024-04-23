@@ -87,8 +87,8 @@ void remove(Database &database, std::string &key){
       }
     }
     database.dbSize--;
-    delete[] temp;
     delete entry;
+    delete[] temp;
   }
 };
 
